@@ -28,13 +28,14 @@ function sum (num1, num2){
 
 // Create a function called 'lovesCodeChecker' that takes in a single parameter called 'x'. Check to see if 'x' is equal to true. If it is, return a true boolean. If 'x' does not equal true, return a false boolean.  
 
-function lovesCodeChecker(x){
-	if(x){
+function lovesCodeChecker(x) {
+	if(x === true) {
 		return true
-	}else{
+	} else {
 		return false
 	}
 }
+
 
 //////////////////PROBLEM 6////////////////////
 
@@ -52,7 +53,9 @@ function oddChecker(num){
 
 // Create a function called 'iLove' that takes in two string parameters, 'name' and 'love'. Have the function take the two parameters and return a string that says "NAMEPARAM loves LOVEPARAM" with the appropriate parameters in the string. e.g. "Joseph loves music"
 
-//Code Here
+function iLove(name, love) {
+	return `${name} loves ${love}`
+}
 
 //////////////////PROBLEM 8////////////////////
 
@@ -78,24 +81,43 @@ let middleNums = numbers.slice(1,4)
 
 // Create an object called 'me' that has the following keys: firstName, state, age, and greeter. The value of the firstName key should be your name as a string. The value of the property state should be your current state or providence of residence as a string. The value of age should be your age as a number. greeter should be a method that returns the string 'Hello! My name is NAMEVALUE and I live in STATEVALUE' with the corresponding values. 
 
-let me ={
+const me = {
 	firstName: 'Josh',
 	state: 'Utah',
-	age: 24, 
-	
-	
+	age: 24,
+	greeter: function(){
+		return `Hello! My name is ${firstName} and I live in ${state}`
+	}
 }
+
 
 //////////////////PROBLEM 12////////////////////
 
 // Create a function called 'bigOrSmall' that takes in one parameter, 'arr', which will be an array of numbers. Inside of the bigOrSmall function, create a new array called 'answers'. Then, loop over the passed in arr parameter, and check to see if the number in the array is GREATER than 100. If it is, push 'big' as a string to the answers array. If the number is LESS than or EQUAL to 100, push 'small' as a string to the answers array. Return the answers array inside of the function.
 
+function bigOrSmall(arr) {
+	let answers = []
+	for(let i = 0; i < arr.length; i++) {
+		if(arr[i] > 100) {
+			answers.push('big')
+		} else if(arr[i] <= 100) {
+			answers.push('small')
+		}
+	}
+	return answers
+}
 
 //////////////////PROBLEM 13////////////////////
 
 // Create a function called 'arrayReverser' that takes in one parameter, 'arr'. Inside of arrayReverser, create an empty array called 'reversed'. Using a for loop, loop over the passed in array IN REVERSE (this means your counter should decrement), and then add each item to the 'reversed' array variable you created. Finally, return the 'reversed' array variable. 
 
-//Code Here
+function arrayReverser(arr) {
+	let reversed = []
+	for(let i = arr.length; i > 0; i--) {
+		reversed.push(i)
+	}
+	return reversed
+}
 
 //////////////////PROBLEM 14 - 18 Setup////////////////////
 
@@ -136,20 +158,16 @@ for(let i = 0; i < myNumbers.length; i++ ){
 
 // Finally, use .forEach to find the index of each item in the array. To begin, create an empty array called 'myNumbersIndex'. Then, use forEach to push each item's index from the myNumbers array into the newly created myNumbersIndex array. 
 
-//const myNumbersIndex = [];
 
-//myNumbers.forEach(function(item){
-	//myNumbersIndex.push(item);
-//}
-//)
 
 //////////////////PROBLEM 18////////////////////
 
 // Did you know that George Foreman has five sons named George? Go ahead and change everyone's name in the notGeorge array to George using .map. Store the resulting array in a variable named 'forTheLoveOfGeorge'.
+
 const notGeorge = ['Louis', 'Ted', 'Bill', 'Sharon', 'Mark', 'Angela']
 
-let forTheLoveOfGeorge = notGeorge.map(function(element){
-	return element = 'George '
+let forTheLoveOfGeorge = notGeorge.map((element) => {
+	return element = 'George'
 })
 
 //////////////////PROBLEM 19////////////////////
@@ -164,19 +182,21 @@ const people = [
 	{ name: 'Josh', friend: true, awesomeLevel: 7 }
 ]
 
-let enemies = [];
-	for(let i = 0; i < people.length; i++ ){
-		if(people[i] = false){
-			enemies.push(people[i])
-		}
+let enemies = people.filter((element, index) => {
+	if(element.friend === false) {
+		return element
 	}
-
+})
 //////////////////PROBLEM 20////////////////////
 
 // Using the people array above, get a total of the awesomeLevel from all the people, and store that value in a variable named 'totallyAwesome'. Use .reduce().
 
-let totallyAwesome = people.reduce(function(acc,element){
-	return acc + element  
-})
-
+let totallyAwesome = people.reduce((acc, e) => {
+	let sum = acc
+	
+	console.log(e.awesomeLevel)
+	console.log(acc)
+	
+	return e.awesomeLevel + acc
+}, 0)
 
